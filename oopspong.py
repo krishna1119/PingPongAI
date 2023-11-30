@@ -1,5 +1,5 @@
 import turtle
-
+import numpy as np
 
 
 class PongGame:
@@ -54,15 +54,20 @@ class PongGame:
 
         #here is the action part, so i have to get the sction here, change it to a function
         self.wn.listen()
-        self.wn.onkeypress(self.paddle_b_up,"Up")
-        self.wn.onkeypress(self.paddle_b_down,"Down")
+    # some erros is there i dont know what it is
+    def movement(self, action):
+        array = np.array(action)
+        if np.array_equal(array, [1,0,0]):
+            self.paddle_b_up()
+        elif np.array_equal(array, [0,1,0]):
+            self.paddle_b_down()
         self.wn.onkeypress(self.paddle_a_up,"w")
         self.wn.onkeypress(self.paddle_a_down,"s")
 
     def paddle_b_up(self):
-        y=self.paddle_b.ycor()
-        y+=20
-        self.paddle_b.sety(y)
+        y=float(self.paddle_b.ycor())
+        y+=0.5
+        self.paddle_b.goto(self.paddle_b.xcor(), y)
 
     def paddle_b_down(self):
         y=self.paddle_b.ycor()
@@ -83,12 +88,14 @@ class PongGame:
         y-=20
         self.paddle_a.sety(y)
 
-
+    
 
        
     def run_game(self):
         while True:   #main game loop
             self.wn.update()
+            action = [1,0,0]
+            self.movement(action)
 
             self.ball.setx(self.ball.xcor()+ self.ball.dx)
             self.ball.sety(self.ball.ycor() + self.ball.dy)

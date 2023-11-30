@@ -1,0 +1,62 @@
+state =
+[
+        Ball(X), Ball(Y), Paddle(Y), Ball.dy(Y)
+]
+
+Action =[
+    Up, Down,Stay
+]
+
+Rewards():
+   if agent is appliedd to A:
+        if A scores:
+            +10
+        elif B score:
+            -10
+        else:
+            +0.25               #for staying in game
+
+
+Neural Network:
+    input is the state: 4 nodes
+    output is the action to be done: 3 nodes --> binary aakanm
+
+
+in game.py
+    - create a function that can return the action list or just add it to the run_game function directly
+    - this function will call the agent and then do all the learning
+    - then, utilise the action to do the task
+
+
+- this mnodel has an online learning approach, which makes it computationally hard to execute. and what it does is its making the initial learning really expensive. 
+- but its favorable to changing envoirnments, but in this certain scenario there is no need to account for changing enmvoirnments.
+-also, we have to find a way so that the paddles can move on their own. 
+- also have to set boundaries for the paddle so that it doesnt get out from the screen.
+
+-maybe to make it easier, maybe we can ahrd train a paddle? idk if thats sort of a cheating or that makes it worser.
+
+
+
+
+
+The approach you take for training your AI to play ping pong can depend on various factors, including the complexity of your project, the resources available, and your specific goals. However, I can provide you with some general guidance on the two approaches you mentioned:
+
+Online Learning (Learning after Each Action):
+
+This approach involves updating the AI's model after each action it takes during gameplay. This allows the AI to learn and adapt in real-time based on the outcomes of its actions.
+Pros: The model can quickly adapt to changing conditions, and the learning process is continuous.
+Cons: It might be computationally expensive to update the model frequently, and the AI may not perform optimally during early stages of training.
+Offline Learning (Learning from Multiple Games):
+
+This approach involves playing multiple games, collecting data, and then updating the AI's model based on the aggregated experiences from those games.
+Pros: Training can be more computationally efficient, and the model can learn from a diverse set of experiences.
+Cons: The AI may not adapt as quickly to changing conditions during gameplay, and there could be a delay in incorporating new knowledge.
+Here are some additional considerations:
+
+Exploration vs. Exploitation: Balancing exploration (trying new actions to discover their effects) and exploitation (choosing known effective actions) is crucial. You may need a strategy to encourage exploration, especially early in the training process.
+
+Reward Structure: Design a reward system that encourages the AI to achieve the desired behavior. For a ping pong game, the reward might be based on scoring points, and the AI should learn to maximize this reward.
+
+Model Complexity: Depending on your resources, you may need to choose a model architecture that strikes a balance between complexity and training efficiency.
+
+Experimenting with both approaches and finding the right balance for your specific project could be a good strategy. You might also consider reinforcement learning algorithms such as Q-learning or deep reinforcement learning if your project involves training a neural network to make decisions.
