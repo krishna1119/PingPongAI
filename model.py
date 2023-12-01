@@ -41,7 +41,7 @@ class Qtrainer:
             state = torch.unsqueeze(state,0)
             next_state = torch.unsqeeze(next_state,0)
             action = torch.unsqueeze(action,0)
-            reward= torch.unsquueze(reward,0)
+            reward= torch.unsqueeze(reward,0)
             done = (done, )
 
         pred = self.model(state)
@@ -62,7 +62,7 @@ class Qtrainer:
 
         
         self.optimiser.zero_grad()
-        loss = self.crtiterion(target,pred)
+        loss = self.criterion(target,pred)
         loss.backward()
 
         self.optimiser.step()

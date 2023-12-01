@@ -76,7 +76,7 @@ def train():
         final_move = agent.get_action(state_old)
         reward, done, score = agent.get_state(game)
 
-        agent.train_short_memory(state_old, final_move, reward, state_new)
+        agent.train_short_memory(state_old, final_move, reward, state_new)          #state_new define cheyan und
         agent.remember (state_old, final_move, reward, state_new)
        
         #agent.train_long_memory()
@@ -89,7 +89,7 @@ def train():
 
 
 
-    pass
+    
 
 if __name__ == '__main__':
     train()

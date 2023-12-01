@@ -52,7 +52,7 @@ class PongGame:
         self.pen.goto(0,260)
         self.pen.write("Player A: 0  Player B: 0", align="center", font=("Courier",24,"normal"))
 
-        #here is the action part, so i have to get the sction here, change it to a function
+        #here is the action part, so i have to get the sction here, change it to a function, get the list and then do as per the true values
         self.wn.listen()
     # some erros is there i dont know what it is
     def movement(self, action):
@@ -94,7 +94,7 @@ class PongGame:
     def run_game(self):
         while True:   #main game loop
             self.wn.update()
-            action = [1,0,0]
+            action = [1,0,0]                #get the action to be performed
             self.movement(action)
 
             self.ball.setx(self.ball.xcor()+ self.ball.dx)
@@ -133,11 +133,11 @@ class PongGame:
                 self.ball.setx(-340)
                 self.ball.dx*=-1.1
 
-            if self.scorea==3 or self.scoreb==3:
+            if self.scorea==3 or self.scoreb==3:      #change this so that it goes on forver
                 self.scoreUpdate()
                 break
 
-    def scoreUpdate(self):
+    def scoreUpdate(self):                      #TODO: DELETE THIS FUNCTION AS WE WANT IT TO GO ON FOREVER
         self.wn.clear()    
         while True:
             if self.scorea==3 or self.scoreb==3:       
